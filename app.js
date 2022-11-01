@@ -1,5 +1,6 @@
 const addTodoBtn = document.querySelector(".add-todo>button");
 const todosList = document.getElementById("todos");
+document.addEventListener("DOMContentLoaded", loadTodos);
 
 addTodoBtn.addEventListener("click", handleClick);
 
@@ -24,6 +25,13 @@ function createTodo(todoText) {
 function saveToStorage(newTodo) {
   const todos = JSON.parse(localStorage.getItem("tasks")) || [];
   localStorage.setItem("tasks", JSON.stringify([...todos, newTodo]));
+}
+
+function loadTodos() {
+  const todos = JSON.parse(localStorage.getItem("tasks"));
+  if (todos) {
+    todos.forEach((todo) => createTodo(todo));
+  }
 }
 
 function removeTodo() {
