@@ -8,6 +8,7 @@ function handleClick() {
   const todoText = todoInput.value.trim();
   if (todoText) {
     createTodo(todoText);
+    saveToStorage(todoText);
     todoInput.value = "";
   }
 }
@@ -18,6 +19,11 @@ function createTodo(todoText) {
   li.classList.add("todo-item");
   todosList.append(li);
   li.querySelector("span").addEventListener("click", removeTodo);
+}
+
+function saveToStorage(newTodo) {
+  const todos = JSON.parse(localStorage.getItem("tasks")) || [];
+  localStorage.setItem("tasks", JSON.stringify([...todos, newTodo]));
 }
 
 function removeTodo() {
