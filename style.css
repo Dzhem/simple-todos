@@ -53,6 +53,9 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.todo-item:not(:last-child) {
   margin-bottom: 10px;
 }
 
