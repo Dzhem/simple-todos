@@ -40,8 +40,24 @@ h1 {
 
 #todos {
   margin: 0 auto;
-  padding: 10px;
+  padding: 10px 1.3rem;
   border: 1px solid #009688;
   max-width: 400px;
   border-radius: 10px;
+  list-style: none;
+  font-size: 1.3rem;
+  color: #005e56;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.todo-item span {
+  margin-left: 10px;
+  font-size: 2rem;
+  cursor: pointer;
 }

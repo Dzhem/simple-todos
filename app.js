@@ -9,6 +9,7 @@ function handleClick() {
   if (todoText) {
     const li = document.createElement("li");
     li.innerHTML = todoText + "<span>&#128465;</span>";
+    li.classList.add("todo-item");
     todoInput.value = "";
     todosList.append(li);
   }
