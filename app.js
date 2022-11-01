@@ -41,7 +41,7 @@ function removeTodo() {
 }
 
 function removeFromStorage(removeTodo) {
-  const todos = JSON.parse(localStorage.getItem("tasks"));
-  const indexTodo = todos.findIndex((todo) => todo === removeTodo);
-  // todos = todos.slice(indexTodo, )
+  let todos = JSON.parse(localStorage.getItem("tasks"));
+  todos = todos.filter((todo) => todo !== removeTodo);
+  localStorage.setItem("tasks", JSON.stringify(todos));
 }
