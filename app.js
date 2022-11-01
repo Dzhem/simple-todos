@@ -1,11 +1,12 @@
 const addTodoBtn = document.querySelector(".add-todo>button");
 const todosList = document.getElementById("todos");
+const todoInput = document.querySelector(".add-todo > input");
 document.addEventListener("DOMContentLoaded", loadTodos);
+document.addEventListener("keypress", handleEnter);
 
 addTodoBtn.addEventListener("click", handleClick);
 
 function handleClick() {
-  const todoInput = this.previousElementSibling;
   const todoText = todoInput.value.trim();
   if (todoText) {
     createTodo(todoText);
@@ -44,4 +45,13 @@ function removeFromStorage(removeTodo) {
   let todos = JSON.parse(localStorage.getItem("tasks"));
   todos = todos.filter((todo) => todo !== removeTodo);
   localStorage.setItem("tasks", JSON.stringify(todos));
+}
+
+function handleEnter(event) {
+  if (event.key === "Enter" && todoInput.value.trim()) {
+    const todoText = todoInput.value.trim();
+    createTodo(todoText);
+    saveToStorage(todoText);
+    todoInput.value = "";
+  }
 }
