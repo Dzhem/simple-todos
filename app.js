@@ -17,4 +17,10 @@ function createTodo(todoText) {
   li.innerHTML = todoText + "<span>&#128465;</span>";
   li.classList.add("todo-item");
   todosList.append(li);
+  li.querySelector("span").addEventListener("click", removeTodo);
+}
+
+function removeTodo() {
+  this.removeEventListener("click", removeTodo);
+  this.closest(".todo-item").remove();
 }
