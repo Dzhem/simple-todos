@@ -7,10 +7,14 @@ function handleClick() {
   const todoInput = this.previousElementSibling;
   const todoText = todoInput.value.trim();
   if (todoText) {
-    const li = document.createElement("li");
-    li.innerHTML = todoText + "<span>&#128465;</span>";
-    li.classList.add("todo-item");
+    createTodo(todoText);
     todoInput.value = "";
-    todosList.append(li);
   }
+}
+
+function createTodo(todoText) {
+  const li = document.createElement("li");
+  li.innerHTML = todoText + "<span>&#128465;</span>";
+  li.classList.add("todo-item");
+  todosList.append(li);
 }
