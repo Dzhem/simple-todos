@@ -59,7 +59,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-.todo-item span {
+span.basket {
   margin-left: 10px;
   font-size: 2rem;
   cursor: pointer;

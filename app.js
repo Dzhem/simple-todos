@@ -16,10 +16,10 @@ function handleClick() {
 
 function createTodo(todoText) {
   const li = document.createElement("li");
-  li.innerHTML = todoText + "<span>&#128465;</span>";
+  li.innerHTML = `<span>${todoText}</span><span class="basket">&#128465;</span>`;
   li.classList.add("todo-item");
   todosList.append(li);
-  li.querySelector("span").addEventListener("click", removeTodo);
+  li.querySelector("span.basket").addEventListener("click", removeTodo);
 }
 
 function saveToStorage(newTodo) {
@@ -36,5 +36,12 @@ function loadTodos() {
 
 function removeTodo() {
   this.removeEventListener("click", removeTodo);
+  removeFromStorage(this.previousElementSibling.innerText);
   this.closest(".todo-item").remove();
+}
+
+function removeFromStorage(removeTodo) {
+  const todos = JSON.parse(localStorage.getItem("tasks"));
+  const indexTodo = todos.findIndex((todo) => todo === removeTodo);
+  // todos = todos.slice(indexTodo, )
 }
